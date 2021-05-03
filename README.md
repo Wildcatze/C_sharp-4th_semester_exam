@@ -1,2 +1,2 @@
 # C--Project
-Project form C# module at KEA.
+Project for C# module at KEA.
