@@ -1,0 +1,11 @@
+﻿
+#avatar {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 10% 0%;
+}
+
+.sectionHeadder {
+    padding: 5% 0% 3% 0%;
+    border-bottom: 1px black solid;
+}

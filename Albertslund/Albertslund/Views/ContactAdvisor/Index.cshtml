@@ -1,0 +1,36 @@
+﻿@page
+@model Albertslund.Views.ContactAdvisor.IndexModel
+@{
+}
+<form id="contactPageForm" class="form-position" method="POST" action="/">
+    <h3 id="contact-headder">Contact Form</h3>
+    <div class="row form-field">
+        <div class="col ">
+            <input type="text" class="form-control" name="FirstName" placeholder="*First name" required>
+        </div>
+        <div class="col ">
+            <input type="text" class="form-control" name="LastName" placeholder="*Last name" required>
+        </div>
+    </div>
+
+    <div class="row form-field">
+        <div class="col">
+            <input type="email" class="form-control" name="Email" placeholder="*Email" required>
+        </div>
+    </div>
+    <div class="row form-field">
+        <div class="col">
+            <input type="text" class="form-control" name="Subject" placeholder="*Subject" required>
+        </div>
+    </div>
+    <div class="row form-field">
+        <div class="col">
+            <textarea type="text" class="form-control" name="Message" placeholder="*Message" rows="5" cols="30" required></textarea>
+        </div>
+    </div>
+
+    <div class="center-elements">
+        <button type="submit" class="btn form-button">Send</button>
+    </div>
+
+</form>

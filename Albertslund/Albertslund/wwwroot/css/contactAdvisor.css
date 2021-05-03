@@ -1,0 +1,30 @@
+﻿.form-button {
+    margin: auto;
+    float: right;
+    border: black 1px solid;
+    margin-top: 3%;
+}
+
+.form-field {
+    padding-top: 3%;
+}
+
+.form-position {
+    position: relative;
+    top: 20%;
+    border: black 1px solid;
+    padding: 5% 5% 10% 5%;
+}
+
+.form-control {
+    border: 1px solid black;
+    color: black !important;
+}
+
+#contact-headder {
+    text-align: center;
+}
+
+textarea {
+    max-height: 200px;
+}
