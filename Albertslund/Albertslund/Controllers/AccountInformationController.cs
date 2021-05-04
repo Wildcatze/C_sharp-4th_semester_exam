@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Albertslund.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,14 @@ namespace Albertslund.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
+
+            ViewModel mymodel = new ViewModel();
+            mymodel.user = context.GetUser(1);
+            mymodel.userAddress = context.GetUserAddress(1);
+            mymodel.userContact = context.GetUserContact(1);
+            mymodel.userHouse = context.GetUserHouse(1);
+            return View(mymodel);
         }
     }
 }
