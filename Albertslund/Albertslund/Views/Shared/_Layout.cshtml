@@ -10,41 +10,56 @@
     <link rel="stylesheet" href="~/css/contactAdvisor.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Albertslund</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AccountInformation" asp-action="Index">Account Information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ContactAdvisor" asp-action="Index">Contact Advisor</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    @* This is the website's LOGO *@
+    <div style="width: 300px; height: 46px; position: fixed; left: 2%; top: 3%">
+        <img src="~/css/AlbertslundLogo.png" width="300px" height="46px" />
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Albertslund - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    @* Put here the NAVIGATION buttons for the top menu *@
+    <header class="header">
+        <div class="container" style="width: 1000px; height: 60px; margin-top: 1.7%">
+            <a asp-area="" asp-controller="Home" asp-action="Index"
+               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: navy; font-size: 25px;">
+                Home
+            </a>
+
+            <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
+               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: navy; font-size: 25px;">
+                Account Information
+            </a>
+
+            <a asp-area="" asp-controller="Login" asp-action="Index"
+               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: navy; font-size: 25px;">
+                Login
+            </a>
+
+            <a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"
+               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: navy; font-size: 25px;">
+                Contact Advisor
+            </a>
+
+        </div>
+    </header>
+
+    @* Put here the BODY main elements *@
+
+    <main role="main" class="pb-3">
+        <div style="margin-top: 1%">
+            @RenderBody()
+        </div>
+    </main>
+
+
+    @* Put here the CONTACT details *@
+    <footer class="footer" style="background-color: navy; position: fixed; left: 0; bottom: 0; width: 100%;">
+        <div style="margin-left: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
+            <p style="margin: 0; ">E-mail: albertslund@albertslund.dk</p>
+            <p style="margin: 0; ">Phone: +45 43 68 68 68</p>
+            <p style="margin: 0; ">Fax: Fax +45 43 68 69 28</p>
+            <p style="margin: 0; ">Address: Nordmarks Allé 2620 Albertslund Denmark</p>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

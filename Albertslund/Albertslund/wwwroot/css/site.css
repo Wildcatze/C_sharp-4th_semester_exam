@@ -1,71 +1,51 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿body {
+    padding: 0;
+    margin: 0;
+    background-color: floralwhite;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.slider-frame {
+    overflow: hidden;
+    height: 700px;
+    width: 1920px;
+    margin-left: 0px;
+    margin-top: 0px;
+    opacity: 70%;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+@-webkit-keyframes slide_animation {
+    0% {left: -1920px;}
+    10% {left: -1920px;}
+    15% {left: 0px;}
+    20% {left: 0px;}
+    30% {left: 1920px;}
+    35% {left: 1920px;}
+    40% {left: 1920px;}
+    45% {left: 3840px;}
+    50% {left: 3840px;}
+    60% {left: 1920px;}
+    70% {left: 1920px;}
+    75% {left: 0px;}
+    80% {left: 0px;}
+    90% {left: -1920px;}
+    100% {left: -1920px;}
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.slide-images {
+    width: 7680px;
+    height: 700px;
+    margin: 0 0 0 -3840px;
+    position: relative;
+    -webkit-animation-name: slide_animation;
+    -webkit-animation-duration: 60s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+.img-container {
+    height: 700px;
+    width: 1920px;
+    position: relative;
+    float: left;
 }
