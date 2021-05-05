@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,32 +19,6 @@ namespace Albertslund.Models
         private MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);
-        }
-
-        public List<UserHouse> GetAllAlbums()
-        {
-            List<UserHouse> list = new List<UserHouse>();
-
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from user_house", conn);
-
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        list.Add(new UserHouse()
-                        {
-                            house_id = Convert.ToInt32(reader["house_id"]),
-                            house_type = reader["house_type"].ToString(),
-                            house_area = reader["house_area"].ToString(),
-                            heating_system = reader["heating_system"].ToString()
-                        });
-                    }
-                }
-            }
-            return list;
         }
 
         //get user house information based on house id
@@ -70,6 +45,34 @@ namespace Albertslund.Models
             return userHouse;
         }
 
+        public bool UpdateHouse(UserHouse userHouse)
+        {
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+
+
+                MySqlCommand cmd = new MySqlCommand("UPDATE user_house SET house_type=@HouseType, house_area=@HouseArea, heating_system=@Heating WHERE house_id=@House_id", conn);
+                cmd.Parameters.AddWithValue("@HouseType", userHouse.house_type);
+                cmd.Parameters.AddWithValue("@HouseArea", userHouse.house_area);
+                cmd.Parameters.AddWithValue("@Heating", userHouse.heating_system);
+                cmd.Parameters.AddWithValue("@House_id", userHouse.house_id);
+                using (var reader = cmd.ExecuteReader())
+                { }
+
+                UserHouse updatedHouse = GetUserHouse(userHouse.house_id);
+
+                if (!string.Equals(updatedHouse.house_type, userHouse.house_type) || !string.Equals(updatedHouse.house_area, userHouse.house_area) || !string.Equals(updatedHouse.heating_system, userHouse.heating_system))
+                {
+
+                    return false;
+                }
+                return true;
+            }
+
+        }
+
         //get user contact information based on contact id
         public UserContact GetUserContact(int contact_id)
         {
@@ -92,6 +95,34 @@ namespace Albertslund.Models
                 }
             }
             return userContact;
+        }
+
+        public bool UpdateContact(UserContact userContact)
+        {
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+
+
+                MySqlCommand cmd = new MySqlCommand("UPDATE user_contact SET email=@Email, phone=@Phone, social_media=@Social WHERE contact_id=@Contact_id", conn);
+                cmd.Parameters.AddWithValue("@Email", userContact.email);
+                cmd.Parameters.AddWithValue("@Phone", userContact.phone);
+                cmd.Parameters.AddWithValue("@Social", userContact.social_media);
+                cmd.Parameters.AddWithValue("@Contact_id", userContact.contact_id);
+                using (var reader = cmd.ExecuteReader())
+                { }
+
+                UserContact updatedContact = GetUserContact(userContact.contact_id);
+
+                if (!string.Equals(updatedContact.email, userContact.email) || !string.Equals(updatedContact.phone, userContact.phone) || !string.Equals(updatedContact.social_media, userContact.social_media))
+                {
+
+                    return false;
+                }
+                return true;
+            }
+
         }
 
 
@@ -142,12 +173,37 @@ namespace Albertslund.Models
                         user.reading_id = Convert.ToInt32(reader["reading_id"]);
                         user.contact_id = Convert.ToInt32(reader["contact_id"]);
                         user.address_id = Convert.ToInt32(reader["address_id"]);
-                        user.bank_id = Convert.ToInt32(reader["bank_id"]);
                         user.house_id = Convert.ToInt32(reader["house_id"]);
                     };
                 }
             }
             return user;
+        }
+
+        public bool UpdateUser(int user_id, string password)
+        {
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+    
+     
+                MySqlCommand cmd = new MySqlCommand("UPDATE user SET password=@Password WHERE user_id=@User_id", conn);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@User_id", user_id);
+                using (var reader = cmd.ExecuteReader())
+                { }
+
+                User updatedUser = GetUser(user_id);
+                
+                if (!string.Equals(updatedUser.password, password))
+                {
+ 
+                    return false;
+                }
+                return true;
+            }
+            
         }
 
     }

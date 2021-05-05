@@ -10,32 +10,146 @@
     <div class="row">
         <div class="col-sm-4">
             <img id="avatar" src="https://www.acumarketing.com/acupuncture-websites/wp-content/uploads/2020/01/anonymous-avatar-sm.jpg" alt="avatar" />
-            <p>Username: @Html.DisplayFor(model => model.user.username)</p>
-            <p>Password: @Html.DisplayFor(model => model.user.password)</p>
+            <p>Username: @Model.user.username</p>
+            <p >Password: @Model.user.password</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#passwordModal">
+                Chanange Password
+            </button>
+
         </div>
+        <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateFormPassword" method="POST" action="/AccountInformation/UpdatePassword">
+                            <div class="row form-field">
+                                <div class="col ">
+                                    <input type="text" class="form-control" asp-for="user.password" placeholder="New Password" required>
+                                    <input type="text" class="form-control" asp-for="user.user_id" hidden>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" form="updateFormPassword" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div id="acountInformationSection" class="col-sm-8">
             <div id="contactInfo">
-                <h3 class="sectionHeadder">Contact Information</h3>
-                <p>Phone: @Html.DisplayFor(model => model.userContact.phone)</p>
-                <p>Email: @Html.DisplayFor(model => model.userContact.email)</p>
-                <p>Social Media: @Html.DisplayFor(model => model.userContact.social_media)</p>
+                <h3 class="sectionHeadder">
+                    Contact Information
+                    <button type="button" class="btn btn-primary button-user-info" data-toggle="modal" data-target="#ContactModal">
+                        Chanange Contact Informaton
+                    </button>
+                </h3>
+                <p>Phone: @Model.userContact.phone</p>
+                <p>Email: @Model.userContact.email</p>
+                <p>Social Media: @Model.userContact.social_media</p>
             </div>
+
+            <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Change Contact Information </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="updateFormContact" method="POST" action="/AccountInformation/UpdateContact">
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="text" class="form-control" asp-for="userContact.phone" placeholder="Phone number" required>
+                                    </div>
+                                </div>
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="email" class="form-control" asp-for="userContact.email" placeholder="Email" required>
+                                    </div>
+                                </div>
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="text" class="form-control" asp-for="userContact.social_media" placeholder="Social Media" required>
+                                        <input type="text" class="form-control" asp-for="userContact.contact_id" hidden>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" form="updateFormContact" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="addressInfo">
                 <h3 class="sectionHeadder">Address Information</h3>
-                <p>Street: @Html.DisplayFor(model => model.userAddress.street_name)</p>
-                <p>ZIP: @Html.DisplayFor(model => model.userAddress.ZIP)</p>
-                <p>Region: @Html.DisplayFor(model => model.userAddress.region)</p>
-            </div>
-            <div id="paymentInfo">
-                <h3 class="sectionHeadder">Payment Information</h3>
-                <p>Acc. No.: </p>
-                <p>Bank Name: </p>
+                <p>Street: @Model.userAddress.street_name</p>
+                <p>ZIP: @Model.userAddress.ZIP</p>
+                <p>Region: @Model.userAddress.region</p>
             </div>
             <div id="houseInfo">
-                <h3 class="sectionHeadder">House Information</h3>
-                <p>Type: @Html.DisplayFor(model => model.userHouse.house_type)</p>
-                <p>Total Area: @Html.DisplayFor(model => model.userHouse.house_area) </p>
-                <p>Heating System: @Html.DisplayFor(model => model.userHouse.heating_system) </p>
+                <h3 class="sectionHeadder">
+                    House Information
+                    <button type="button" class="btn btn-primary button-user-info" data-toggle="modal" data-target="#HouseModal">
+                        Chanange House Informaton
+                    </button>
+                </h3>
+                <p>Type: @Model.userHouse.house_type</p>
+                <p>Total Area: @Model.userHouse.house_area</p>
+                <p>Heating System: @Model.userHouse.heating_system</p>
+            </div>
+            <div class="modal fade" id="HouseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Change Contact Information </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="updateFormHouse" method="POST" action="/AccountInformation/UpdateHouse">
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="text" class="form-control" asp-for="userHouse.house_type" placeholder="House Type" required>
+                                    </div>
+                                </div>
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="text" class="form-control" asp-for="userHouse.house_area" placeholder="House Area" required>
+                                    </div>
+                                </div>
+                                <div class="row form-field">
+                                    <div class="col ">
+                                        <input type="text" class="form-control" asp-for="userHouse.heating_system" placeholder="Heating System" required>
+                                        <input type="text" class="form-control" asp-for="userHouse.house_id" hidden>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" form="updateFormHouse" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

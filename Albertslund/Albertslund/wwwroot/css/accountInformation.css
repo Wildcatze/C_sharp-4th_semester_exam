@@ -9,3 +9,14 @@
     padding: 5% 0% 3% 0%;
     border-bottom: 1px black solid;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: navy !important;
+    border-color: navy !important;
+
+}
+
+.button-user-info{
+    float: right !important;
+}
