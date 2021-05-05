@@ -142,7 +142,6 @@ namespace Albertslund.Models
                         user.reading_id = Convert.ToInt32(reader["reading_id"]);
                         user.contact_id = Convert.ToInt32(reader["contact_id"]);
                         user.address_id = Convert.ToInt32(reader["address_id"]);
-                        user.bank_id = Convert.ToInt32(reader["bank_id"]);
                         user.house_id = Convert.ToInt32(reader["house_id"]);
                     };
                 }
