@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\Index1.cshtml" />
-    <Content Remove="wwwroot\js\AccountInformation.js" />
     <Content Remove="wwwroot\js\AccountInformation.ts" />
   </ItemGroup>
 

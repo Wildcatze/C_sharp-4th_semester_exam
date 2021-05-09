@@ -45,34 +45,6 @@ namespace Albertslund.Models
             return userHouse;
         }
 
-        public bool UpdateHouse(UserHouse userHouse)
-        {
-
-            using (MySqlConnection conn = GetConnection())
-            {
-                conn.Open();
-
-
-                MySqlCommand cmd = new MySqlCommand("UPDATE user_house SET house_type=@HouseType, house_area=@HouseArea, heating_system=@Heating WHERE house_id=@House_id", conn);
-                cmd.Parameters.AddWithValue("@HouseType", userHouse.house_type);
-                cmd.Parameters.AddWithValue("@HouseArea", userHouse.house_area);
-                cmd.Parameters.AddWithValue("@Heating", userHouse.heating_system);
-                cmd.Parameters.AddWithValue("@House_id", userHouse.house_id);
-                using (var reader = cmd.ExecuteReader())
-                { }
-
-                UserHouse updatedHouse = GetUserHouse(userHouse.house_id);
-
-                if (!string.Equals(updatedHouse.house_type, userHouse.house_type) || !string.Equals(updatedHouse.house_area, userHouse.house_area) || !string.Equals(updatedHouse.heating_system, userHouse.heating_system))
-                {
-
-                    return false;
-                }
-                return true;
-            }
-
-        }
-
         //get user contact information based on contact id
         public UserContact GetUserContact(int contact_id)
         {
