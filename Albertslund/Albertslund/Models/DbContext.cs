@@ -151,6 +151,38 @@ namespace Albertslund.Models
             }
             return user;
         }
+        //for login
+        public bool GetUserByUsernameAndPassword(string username,string password)
+        {
+            User user = new User();
+            using(MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from user where username=@Username",conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        user.user_id = Convert.ToInt32(reader["user_id"]);
+                        user.first_name = reader["first_name"].ToString();
+                        user.second_name = reader["second_name"].ToString();
+                        user.username = reader["username"].ToString();
+                        user.password = reader["password"].ToString();
+                        user.reading_id = Convert.ToInt32(reader["reading_id"]);
+                        user.contact_id = Convert.ToInt32(reader["contact_id"]);
+                        user.address_id = Convert.ToInt32(reader["address_id"]);
+                        user.house_id = Convert.ToInt32(reader["house_id"]);
+                    };
+                }
+            }
+            if (user.password == password)
+            {
+                Debug.WriteLine("Operation completed");
+                return true;
+            }
+            return false;
+        }
 
         public bool UpdateUser(int user_id, string password)
         {

@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Albertslund;
+@model ViewModel
+@{
+    ViewData["Title"] = "Account Information";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -45,12 +51,12 @@
             </a>
             <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
                 @* Join this FORM with back-end for LOGIN *@
-                <form action="" class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px;">
+                <form method="post"  asp-action="Login" asp-controller="Login"class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px;">
                     <label for="username" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Username:</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
+                    <input asp-for="user.username" type="text" placeholder="Enter Username" name="user.username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
 
                     <label for="password" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Password:</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
+                    <input asp-for="user.password" type="password" placeholder="Enter Password" name="user.password" style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
 
                     <button type="submit" class="btn" style="background-color: #04AA6D; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;">Login</button>
                     <button type="button" class="btn cancel" style="background-color: #EF0107; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;" onclick="closeForm()">Cancel</button>
