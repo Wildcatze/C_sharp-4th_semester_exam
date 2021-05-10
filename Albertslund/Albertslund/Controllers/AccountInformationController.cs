@@ -54,20 +54,7 @@ namespace Albertslund.Controllers
 
 
         }
-        public ActionResult UpdateHouse(ViewModel mymodel)
-        {
-
-
-            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-
-            if (!context.UpdateHouse(mymodel.userHouse))
-            {
-                return RedirectToAction("DbOperationError");
-            }
-            return RedirectToAction("Index");
-
-
-        }
+        
         public ActionResult DbOperationError()
         {
             

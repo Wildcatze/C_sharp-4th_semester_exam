@@ -25,7 +25,7 @@
         </div>
 
         @* Here sit the CENTER NAVIGATION elements *@
-        <div  style="width: 56%; height: 27px; margin-top: 17px; text-align: center; float: left;">
+        <div style="width: 56%; height: 27px; margin-top: 17px; text-align: center; float: left;">
             <a asp-area="" asp-controller="Home" asp-action="Index"
                style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
                 Home
@@ -40,7 +40,7 @@
         @* Here sit the TOP-RIGH LOGIN elements *@
         <div style="width: 20%; height: 53px; margin-right: 2%; margin-top: 15px; float: right; text-align: right;">
             <a class="open-button" onclick="openForm()" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
-               Login
+                Login
             </a>
             <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
                 @* Join this FORM with back-end for LOGIN *@
@@ -65,7 +65,7 @@
             </div>
         </div>
     </header>
-        
+
     @* Put here the BODY main elements *@
 
     <main role="main">
@@ -78,54 +78,54 @@
     @* Put here the FOOTER elements *@
 
     <footer class="footer" style="background-color: #0A367E; position: fixed; left: 0; bottom: 0; width: 100%; overflow:hidden;height:auto;">
-        
-            @* LEFT HALF *@
-            <div style="float: left; width: 25%; margin-left: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
-                <p style="margin: 0; ">E-mail: albertslund@albertslund.dk</p>
-                <p style="margin: 0; ">Phone: +45 43 68 68 68</p>
-                <p style="margin: 0; ">Fax: Fax +45 43 68 69 28</p>
-                <p style="margin: 0; ">Address: Nordmarks Alle 1, 2620 Albertslund</p>
-            </div>
 
-            @* RIGHT HALF *@
-            <div style="float: right; width: 25%; margin-right: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
-                <p style="margin: 0; ">
-                    Click here to contact an energy advisor &emsp;<br />
-                    <a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"
-                       style="height:25px; width: 35px;">
-                        <img src="~/css/customer service inverted logo.png" style="height: 25px; width: 35px;" />
-                        @*https://www.google.com/search?q=customer+service+white+logo&tbm=isch&ved=2ahUKEwiFq_XP0LDwAhXj8bsIHVfPDgsQ2-cCegQIABAA&oq=customer+service+white+logo&gs_lcp=CgNpbWcQAzoGCAAQBxAeOggIABAHEAUQHjoICAAQCBAHEB46BggAEAgQHlCFkwZYvqUGYLisBmgAcAB4AIABQIgBtgaSAQIxNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=2Y6RYMXaOuPj7_UP1567WA&bih=939&biw=1920&client=opera&hs=lWi#imgrc=d4uFG7OOZSYlOM*@
-                    </a>
-                </p>
-                <p style="margin: 0; ">
-                    Follow us on social media<br>
-                    <a href="https://www.linkedin.com/company/albertslund-kommune/" style="width:30px;height:30px;">
-                        <img src="~/css/linkedin white logo.png" style="width:30px;height:30px;" />
-                        @*https://www.google.com/search?q=Linkedin+white+logo&tbm=isch&ved=2ahUKEwiYpunFzbDwAhWIu6QKHWj8BQUQ2-cCegQIABAA&oq=Linkedin+white+logo&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgYIABAFEB4yBggAEAUQHjoECAAQQ1C1uwVYidQFYKjWBWgAcAB4AIABVIgBugmSAQIxOZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=n4uRYNjaHYj3kgXo-Jco&bih=939&biw=1920&client=opera&hs=YJi#imgrc=301TvyXw7oRGhM*@
-                    </a>
-                    &ensp;
-                    <a href="https://www.facebook.com/albertslundkommune" style="width:30px;height:30px;">
-                        <img src="~/css/facebook white logo.png" style="width:30px;height:30px;" />
-                        @*https://www.google.com/search?q=facebook+black+logo&tbm=isch&ved=2ahUKEwiOscTf1rDwAhUe5rsIHb49D3sQ2-cCegQIABAA&oq=facebook+black+logo&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BggAEAcQHlC7owVY5qcFYLytBWgAcAB4AIABQIgBlQKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=RZWRYM76E57M7_UPvvu82Ac&bih=939&biw=1920&client=opera&hs=YJi#imgrc=ayIHkfxUUH7BmM*@
-                    </a>
-                    &ensp;
-                    <a href="https://www.instagram.com/voresalbertslund/?fbclid=IwAR0aEbm0LNo76zT6pXQ6ygyOcgHbgUnxcdQkpNoDrJw30gQN2i7RqeSBajw" style="width:30px;height:30px;">
-                        <img src="~/css/instagram white logo.png" style="width:30px;height:30px;" />
-                        @*https://www.google.com/search?q=instagram+white+logo&client=opera&hs=bBj&tbm=isch&source=iu&ictx=1&fir=mtTtjw21K4BQbM%252Cx4kr8Q0smV95CM%252C_&vet=1&usg=AI4_-kS-i6lLeJ3zX3FQdbq_M_qrpZ8VeQ&sa=X&ved=2ahUKEwi1lb-C2rDwAhVK9IUKHWUfDqsQ9QF6BAgTEAE&biw=1920&bih=939#imgrc=AfzKj8AW6z3hWM*@
-                    </a>
-                    &ensp;
-                    <a href="https://goo.gl/maps/6Ppak8rgvPNUkELY9" style="width:30px;height:30px;">
-                        <img src="~/css/google maps white logo.png" style="width:30px;height:30px;"/>
-                        @*https://www.google.com/search?q=google+maps+white+logo&tbm=isch&ved=2ahUKEwiKg-7T27DwAhV367sIHXeSAG8Q2-cCegQIABAA&oq=google+maps+white+logo&gs_lcp=CgNpbWcQAzICCAAyBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeOgYIABAHEB46CAgAEAgQBxAeUOjCAli2yQJgy8oCaABwAHgAgAEyiAGcApIBATaYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=a5qRYMqhAffW7_UP96SC-AY&bih=939&biw=1920&client=opera&hs=xx3#imgrc=GKto0o0G9rQKyM*@
-                    </a>
-                </p>
-            </div>
+        @* LEFT HALF *@
+        <div style="float: left; width: 25%; margin-left: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
+            <p style="margin: 0; ">E-mail: albertslund@albertslund.dk</p>
+            <p style="margin: 0; ">Phone: +45 43 68 68 68</p>
+            <p style="margin: 0; ">Fax: Fax +45 43 68 69 28</p>
+            <p style="margin: 0; ">Address: Nordmarks Alle 1, 2620 Albertslund</p>
+        </div>
+
+        @* RIGHT HALF *@
+        <div style="float: right; width: 25%; margin-right: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
+            <p style="margin: 0; ">
+                Click here to contact an energy advisor &emsp;<br />
+                <a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"
+                   style="height:25px; width: 35px;">
+                    <img src="~/css/customer service inverted logo.png" style="height: 25px; width: 35px;" />
+                    @*https://www.google.com/search?q=customer+service+white+logo&tbm=isch&ved=2ahUKEwiFq_XP0LDwAhXj8bsIHVfPDgsQ2-cCegQIABAA&oq=customer+service+white+logo&gs_lcp=CgNpbWcQAzoGCAAQBxAeOggIABAHEAUQHjoICAAQCBAHEB46BggAEAgQHlCFkwZYvqUGYLisBmgAcAB4AIABQIgBtgaSAQIxNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=2Y6RYMXaOuPj7_UP1567WA&bih=939&biw=1920&client=opera&hs=lWi#imgrc=d4uFG7OOZSYlOM*@
+                </a>
+            </p>
+            <p style="margin: 0; ">
+                Follow us on social media<br>
+                <a href="https://www.linkedin.com/company/albertslund-kommune/" style="width:30px;height:30px;">
+                    <img src="~/css/linkedin white logo.png" style="width:30px;height:30px;" />
+                    @*https://www.google.com/search?q=Linkedin+white+logo&tbm=isch&ved=2ahUKEwiYpunFzbDwAhWIu6QKHWj8BQUQ2-cCegQIABAA&oq=Linkedin+white+logo&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgYIABAFEB4yBggAEAUQHjoECAAQQ1C1uwVYidQFYKjWBWgAcAB4AIABVIgBugmSAQIxOZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=n4uRYNjaHYj3kgXo-Jco&bih=939&biw=1920&client=opera&hs=YJi#imgrc=301TvyXw7oRGhM*@
+                </a>
+                &ensp;
+                <a href="https://www.facebook.com/albertslundkommune" style="width:30px;height:30px;">
+                    <img src="~/css/facebook white logo.png" style="width:30px;height:30px;" />
+                    @*https://www.google.com/search?q=facebook+black+logo&tbm=isch&ved=2ahUKEwiOscTf1rDwAhUe5rsIHb49D3sQ2-cCegQIABAA&oq=facebook+black+logo&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BggAEAcQHlC7owVY5qcFYLytBWgAcAB4AIABQIgBlQKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=RZWRYM76E57M7_UPvvu82Ac&bih=939&biw=1920&client=opera&hs=YJi#imgrc=ayIHkfxUUH7BmM*@
+                </a>
+                &ensp;
+                <a href="https://www.instagram.com/voresalbertslund/?fbclid=IwAR0aEbm0LNo76zT6pXQ6ygyOcgHbgUnxcdQkpNoDrJw30gQN2i7RqeSBajw" style="width:30px;height:30px;">
+                    <img src="~/css/instagram white logo.png" style="width:30px;height:30px;" />
+                    @*https://www.google.com/search?q=instagram+white+logo&client=opera&hs=bBj&tbm=isch&source=iu&ictx=1&fir=mtTtjw21K4BQbM%252Cx4kr8Q0smV95CM%252C_&vet=1&usg=AI4_-kS-i6lLeJ3zX3FQdbq_M_qrpZ8VeQ&sa=X&ved=2ahUKEwi1lb-C2rDwAhVK9IUKHWUfDqsQ9QF6BAgTEAE&biw=1920&bih=939#imgrc=AfzKj8AW6z3hWM*@
+                </a>
+                &ensp;
+                <a href="https://goo.gl/maps/6Ppak8rgvPNUkELY9" style="width:30px;height:30px;">
+                    <img src="~/css/google maps white logo.png" style="width:30px;height:30px;" />
+                    @*https://www.google.com/search?q=google+maps+white+logo&tbm=isch&ved=2ahUKEwiKg-7T27DwAhV367sIHXeSAG8Q2-cCegQIABAA&oq=google+maps+white+logo&gs_lcp=CgNpbWcQAzICCAAyBggAEAgQHjIGCAAQCBAeMgYIABAIEB4yBggAEAgQHjIGCAAQCBAeOgYIABAHEB46CAgAEAgQBxAeUOjCAli2yQJgy8oCaABwAHgAgAEyiAGcApIBATaYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=a5qRYMqhAffW7_UP96SC-AY&bih=939&biw=1920&client=opera&hs=xx3#imgrc=GKto0o0G9rQKyM*@
+                </a>
+            </p>
+        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/js/accountInformation.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
