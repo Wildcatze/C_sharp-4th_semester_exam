@@ -2,8 +2,10 @@
 @model Email
 @{
 }
+<iframe src="https://sparenergi.dk/forbruger/vaerktoejer/tilskudsberegner#edit-row-2" style="width:1000px;height:300px"></iframe>
 <form id="contactPageForm" class="form-position" method="POST" action="/ContactAdvisor/SendEmail">
     <h3 id="contact-headder">Contact Form</h3>
+
     <div class="row form-field">
         <div class="col ">
             <input type="text" class="form-control" name="firstName" asp-for="firstName" placeholder="*First name" required>
@@ -28,7 +30,6 @@
             <textarea type="text" class="form-control" name="body" asp-for="body" placeholder="*Message" rows="5" cols="30" required></textarea>
         </div>
     </div>
-
     <div class="center-elements">
         <button type="submit" class="btn form-button">Send Message</button>
     </div>

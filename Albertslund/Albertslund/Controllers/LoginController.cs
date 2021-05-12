@@ -27,6 +27,10 @@ namespace Albertslund.Controllers
 
             if (!context.GetUserByUsernameAndPassword(model.user.username, model.user.password))
             {
+               if(context.createDBEntries())
+                {
+                    Debug.WriteLine("Wrote to DB");
+                }
                 Debug.WriteLine("Operation FAILED");
                 return RedirectToAction("DbOperationError");
             }
