@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using Albertslund.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace Albertslund.Controllers
 {
@@ -13,7 +14,17 @@ namespace Albertslund.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetInt32("SessionUserId") == null)
+            {
+                
+                return Redirect("Home/Index");
+            }
+            else
+            {
+                ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
+                return View();
+            }
+                
         }
 
         [HttpPost]

@@ -1,4 +1,5 @@
 ﻿using Albertslund.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,26 @@ namespace Albertslund.Controllers
 
         public ActionResult Index()
         {
-            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-            
-            ViewModel mymodel = new ViewModel();
-            mymodel.user = context.GetUser(1);
-   
-            mymodel.userAddress = context.GetUserAddress(1);
-            mymodel.userContact = context.GetUserContact(1);
-            mymodel.userHouse = context.GetUserHouse(1);
-            return View(mymodel);
+
+            if (HttpContext.Session.GetInt32("SessionUserId") == null)
+            {
+
+                return Redirect("Home/Index");
+            }
+            else
+            {
+
+                DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
+
+                ViewModel mymodel = new ViewModel();
+                mymodel.user = context.GetUser((int)HttpContext.Session.GetInt32("SessionUserId"));
+
+                mymodel.userAddress = context.GetUserAddress(mymodel.user.address_id);
+                mymodel.userContact = context.GetUserContact(mymodel.user.contact_id);
+                mymodel.userHouse = context.GetUserHouse(mymodel.user.house_id);
+                ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
+                return View(mymodel);
+            }
         }
 
         [HttpPost]

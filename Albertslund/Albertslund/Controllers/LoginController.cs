@@ -1,4 +1,5 @@
 ﻿using Albertslund.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,31 +11,30 @@ namespace Albertslund.Controllers
 {
     public class LoginController : Controller
     {
-        public ActionResult Index()
-        {
-            ViewModel view = new ViewModel();
-            view.user = new User();
-            view.userAddress = new UserAddress();
-            view.userContact = new UserContact();
-            view.userHouse = new UserHouse();
-            return View(view);
-        }
+
         [HttpPost]
         public ActionResult Login(ViewModel model)
         {
             DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
             Debug.WriteLine(model.user.username);
-
-            if (!context.GetUserByUsernameAndPassword(model.user.username, model.user.password))
+            User user = context.GetUserByUsernameAndPassword(model.user.username, model.user.password);
+            if (user == null)
             {
                if(context.createDBEntries())
                 {
                     Debug.WriteLine("Wrote to DB");
                 }
                 Debug.WriteLine("Operation FAILED");
-                return RedirectToAction("DbOperationError");
+                HttpContext.Session.SetInt32("SessioSuccess", 0);
+                return RedirectToAction("Index", "Home");
+                
             }
-            return RedirectToAction("Index");
+
+            HttpContext.Session.SetInt32("SessionUserId", user.user_id);
+            HttpContext.Session.SetInt32("SessioSuccess", 1);
+
+
+            return RedirectToAction("Index", "Home");
 
         }
         public ActionResult DbOperationError()
@@ -42,7 +42,11 @@ namespace Albertslund.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
-
-
 }

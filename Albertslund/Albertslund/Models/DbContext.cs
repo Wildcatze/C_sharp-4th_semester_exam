@@ -158,7 +158,7 @@ namespace Albertslund.Models
             return user;
         }
         //for login
-        public bool GetUserByUsernameAndPassword(string username,string password)
+        public User GetUserByUsernameAndPassword(string username,string password)
         {
             User user = new User();
             using(MySqlConnection conn = GetConnection())
@@ -185,9 +185,9 @@ namespace Albertslund.Models
             if (user.password == password)
             {
                 Debug.WriteLine("Operation completed");
-                return true;
+                return user;
             }
-            return false;
+            return null;
         }
         public bool createDBEntries()
         {

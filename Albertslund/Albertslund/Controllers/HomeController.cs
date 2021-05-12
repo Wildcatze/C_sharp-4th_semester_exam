@@ -1,4 +1,5 @@
 ﻿using Albertslund.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,8 +21,14 @@ namespace Albertslund.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
+            ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessioSuccess");
+
+
             return View();
+       
         }
+
 
         public IActionResult Privacy()
         {
