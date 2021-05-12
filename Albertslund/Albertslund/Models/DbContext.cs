@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using LumenWorks.Framework.IO.Csv;
+using System.Data;
+using System.IO;
+
+
+
 
 namespace Albertslund.Models
 {
@@ -183,7 +189,47 @@ namespace Albertslund.Models
             }
             return null;
         }
-
+        public bool createDBEntries()
+        {
+            bool finished = false;
+            var csvTable = new DataTable();
+            //test.csv is correct daily.csv is corrupt
+            using ( var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(@"D:\School\Work\C--Project\Albertslund\Albertslund\test.csv")), true))
+            {
+              
+                csvTable.Load(csvReader);
+            }
+            //Debug.WriteLine("ROW " + csvTable.Rows[0][1].ToString() + " COLUMN");
+            Debug.WriteLine("ROW " + csvTable.Rows[1][0].ToString() + " COLUMN");
+            Debug.WriteLine("ROW " + csvTable.Rows[2][2].ToString() + " COLUMN");
+            Debug.WriteLine("ROW " + csvTable.Rows[2][3].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[3][0].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[4][0].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[5][0].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[6][0].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[7][0].ToString() + " COLUMN");
+            //Debug.WriteLine("ROW " + csvTable.Rows[8][0].ToString() + " COLUMN");
+            //READING Object 
+            for (int i=0; i<csvTable.Rows.Count;i++)
+            {
+                string dateTime = csvTable.Rows[i][0].ToString();
+                string energyUse = csvTable.Rows[i][2].ToString();
+                string waterUse = csvTable.Rows[i][4].ToString();
+                using (MySqlConnection conn = GetConnection())
+                {
+                    //246810
+                    //13579
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO readings(`timestamp`,`energy_used`,`water_used`) VALUES(@DATETIME,@ENERGYUSE,@WATERUSE)", conn);
+                    cmd.Parameters.AddWithValue("@DATETIME",dateTime);
+                    cmd.Parameters.AddWithValue("@ENERGYUSE", energyUse);
+                    cmd.Parameters.AddWithValue("@WATERUSE", waterUse);
+                    using (var reader = cmd.ExecuteReader())
+                    { finished = true; }
+                }
+            }
+            return finished;
+        }
         public bool UpdateUser(int user_id, string password)
         {
 
