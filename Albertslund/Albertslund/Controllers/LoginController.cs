@@ -11,7 +11,7 @@ namespace Albertslund.Controllers
 {
     public class LoginController : Controller
     {
-  
+
         [HttpPost]
         public ActionResult Login(ViewModel model)
         {
@@ -21,14 +21,16 @@ namespace Albertslund.Controllers
             if (user == null)
             {
                 Debug.WriteLine("Operation FAILED");
-                ViewBag.LoginMessage = "Wrong credentials, try to login again.";
-                return RedirectToAction("Index","Home");
+                HttpContext.Session.SetInt32("SessioSuccess", 0);
+                return RedirectToAction("Index", "Home");
+                
             }
 
             HttpContext.Session.SetInt32("SessionUserId", user.user_id);
-          
-           
-            return RedirectToAction("Index","Home");
+            HttpContext.Session.SetInt32("SessioSuccess", 1);
+
+
+            return RedirectToAction("Index", "Home");
 
         }
         public ActionResult DbOperationError()
@@ -36,7 +38,11 @@ namespace Albertslund.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
-
-
 }

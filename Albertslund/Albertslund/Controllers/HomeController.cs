@@ -21,10 +21,12 @@ namespace Albertslund.Controllers
 
         public IActionResult Index()
         {
-            return View();
-            
+            ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
+            ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessioSuccess");
 
-                
+
+            return View();
+       
         }
 
 

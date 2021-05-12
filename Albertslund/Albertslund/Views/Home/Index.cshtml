@@ -1,9 +1,14 @@
-﻿@using Albertslund; 
+﻿@using Albertslund;
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<p>@ViewBag.AccessMessage</p>
+@{
+    if (ViewBag.SessionSuccess == 0)
+    {
+        <script>alert("Login failed, please input correct username and password.")</script>
+    }
+}
 
 <div style="width: 1920px; height:700px; background-color: lightsteelblue;">
     <div class="slider-frame">
@@ -20,7 +25,7 @@
                 </div>
                 @*https://www.google.com/url?sa=i&url=https%3A%2F%2Fmiramar-home.com%2Fpassive-house-or-passivhaus-towards-efficient-construction%2F&psig=AOvVaw2jE1fXKY7WbbWbX4szx1qf&ust=1620118909291000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLjP8_GTrfACFQAAAAAdAAAAABAD*@
             </div>
-            <div class="img-container"> 
+            <div class="img-container">
                 <img src="~/css/slide2.jpg">
                 <div style="position: absolute; left:50px; top: 50px;">
                     <p style="line-height: 50px; font-size: 35px; font-weight: 450; color: ghostwhite; background: rgba(25, 25, 25, .4); border-radius: 20px; padding: 30px;">
@@ -47,10 +52,11 @@
                 <img src="~/css/slide4.jpg">
                 <div style="position: absolute; right: 50px; bottom: 60px;">
                     <p style="line-height: 50px; font-size: 35px; font-weight: 470; color: ghostwhite; background: rgba(25, 25, 25, .4); border-radius: 20px; padding: 30px;">
-                    Why make your house more energy efficient?<br />
-                    To save up money on the bills.<br />
-                    To reduce your CO2 fingerprint.<br />
-                    To improve temperature stability indoors.</p>
+                        Why make your house more energy efficient?<br />
+                        To save up money on the bills.<br />
+                        To reduce your CO2 fingerprint.<br />
+                        To improve temperature stability indoors.
+                    </p>
                 </div>
                 @*https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thursfields.co.uk%2Fbuying-a-house-with-solar-panels%2F&psig=AOvVaw2nPipPdAG3FWarbKy7cLTV&ust=1620118908228000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKDWiqWTrfACFQAAAAAdAAAAABAD*@
             </div>

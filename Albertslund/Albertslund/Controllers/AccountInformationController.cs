@@ -31,6 +31,7 @@ namespace Albertslund.Controllers
                 mymodel.userAddress = context.GetUserAddress(mymodel.user.address_id);
                 mymodel.userContact = context.GetUserContact(mymodel.user.contact_id);
                 mymodel.userHouse = context.GetUserHouse(mymodel.user.house_id);
+                ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
                 return View(mymodel);
             }
         }

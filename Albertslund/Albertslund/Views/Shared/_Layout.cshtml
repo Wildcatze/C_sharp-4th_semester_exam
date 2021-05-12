@@ -38,39 +38,44 @@
                 Home
             </a>
 
-            <a  asp-area="" asp-controller="AccountInformation" asp-action="Index"
+            <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
                style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
                 Account
             </a>
         </div>
 
         @* Here sit the TOP-RIGH LOGIN elements *@
-        <div style="width: 20%; height: 53px; margin-right: 2%; margin-top: 15px; float: right; text-align: right;">
-            <a class="open-button" onclick="openForm()" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
-                Login
-            </a>
-            <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
-                @* Join this FORM with back-end for LOGIN *@
-                <form method="post"  asp-action="Login" asp-controller="Login"class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px;">
-                    <label for="username" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Username:</b></label>
-                    <input asp-for="user.username" type="text" placeholder="Enter Username" name="user.username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
+    <div id="top-right-login-element" style="width: 20%; height: 53px; margin-right: 2%; margin-top: 15px; float: right; text-align: right;">
+        @{
+            if (ViewBag.UserLogged != null)
+            {
+                <a id="log-button" class="open-button" asp-controller="Login" asp-action="Logout" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
+                    Logout
+                </a>
+            }
+            else
+            {
+                <a id="login-button" class="open-button" onclick="openForm()" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
+                    Login
+                </a>
+            }
+        }
+        
+        <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
+            @* Join this FORM with back-end for LOGIN *@
+            <form method="post" asp-action="Login" asp-controller="Login" class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px;">
+                <label for="username" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Username:</b></label>
+                <input asp-for="user.username" type="text" placeholder="Enter Username" name="user.username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
 
-                    <label for="password" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Password:</b></label>
-                    <input asp-for="user.password" type="password" placeholder="Enter Password" name="user.password" style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
+                <label for="password" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Password:</b></label>
+                <input asp-for="user.password" type="password" placeholder="Enter Password" name="user.password" style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
 
-                    <button type="submit" class="btn" style="background-color: #04AA6D; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;">Login</button>
-                    <button type="button" class="btn cancel" style="background-color: #EF0107; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;" onclick="closeForm()">Cancel</button>
-                </form>
-                <script>
-                    function openForm() {
-                        document.getElementById("myForm").style.display = "block";
-                    }
-                    function closeForm() {
-                        document.getElementById("myForm").style.display = "none";
-                    }
-                </script>
-            </div>
+                <button type="submit" class="btn" style="background-color: #04AA6D; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;">Login</button>
+                <button type="button" class="btn cancel" style="background-color: #EF0107; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;" onclick="closeForm()">Cancel</button>
+            </form>
+
         </div>
+    </div>
     </header>
 
     @* Put here the BODY main elements *@
@@ -128,12 +133,13 @@
             </p>
         </div>
     </footer>
-
+    <script> let userLoggedIn = @ViewBag.UserLogged</script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/accountInformation.js"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>
