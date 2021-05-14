@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Albertslund.Controllers
 
         public void Reader()
         {
-            String WatchingHere = @"E:\School\Code Practice\C#\Exam Project\New CSV";
+            String WatchingHere = @"New CSV";
             var fileSystemWatcher = new FileSystemWatcher(WatchingHere)
             {
                 Filter = "*.csv",
@@ -50,7 +51,7 @@ namespace Albertslund.Controllers
                 "\nAny changes made will appear below.");
         }
 
-        private void ActionOccurOnFileCreated(object sender, FileSystemEventArgs e)
+        public void ActionOccurOnFileCreated(object sender, FileSystemEventArgs e)
         {
             String TheNewFile = e.Name;
             String TheNewFilePath = Path.GetFullPath(TheNewFile);
@@ -68,14 +69,14 @@ namespace Albertslund.Controllers
             }
         }
 
-        private void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)
+        public void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)
         {
             Debug.WriteLine("*** The following file has been deleted:");
             Debug.WriteLine(e.ChangeType + ".");
             Debug.WriteLine(e.Name);
         }
 
-        private void ActionOccurOnFileRenamed(object sender, RenamedEventArgs e)
+        public void ActionOccurOnFileRenamed(object sender, RenamedEventArgs e)
         {
             Debug.WriteLine("*** The following file has been renamed:");
             Debug.WriteLine($"The old file name was: '{e.OldName}'.");
