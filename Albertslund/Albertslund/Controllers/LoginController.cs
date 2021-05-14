@@ -20,10 +20,6 @@ namespace Albertslund.Controllers
             User user = context.GetUserByUsernameAndPassword(model.user.username, model.user.password);
             if (user == null)
             {
-               if(context.createDBEntries())
-                {
-                    Debug.WriteLine("Wrote to DB");
-                }
                 Debug.WriteLine("Operation FAILED");
                 HttpContext.Session.SetInt32("SessioSuccess", 0);
                 return RedirectToAction("Index", "Home");

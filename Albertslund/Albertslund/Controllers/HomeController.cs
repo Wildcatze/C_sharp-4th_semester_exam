@@ -28,7 +28,14 @@ namespace Albertslund.Controllers
             return View();
        
         }
-
+        public void Reader()
+        {
+            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
+            if (context.createDBEntries())
+            {
+                Debug.WriteLine("Wrote to DB");
+            }
+        }
 
         public IActionResult Privacy()
         {
