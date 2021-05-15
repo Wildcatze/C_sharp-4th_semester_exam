@@ -6,13 +6,14 @@
 
 
 
-<div id="accountSection" class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4">
+<div id="accountSection" style="width: 100%; height: 700px; top: 80px; position: absolute;">
+    @* This is the LEFT half *@
+    <div style="float: left; margin-left: 2%; width: 15%; margin-top: 30px; height: 670px;">
+        <div margin-top="25px;">
             <img id="avatar" src="https://www.acumarketing.com/acupuncture-websites/wp-content/uploads/2020/01/anonymous-avatar-sm.jpg" alt="avatar" />
-            <p><b>Username:</b> @Model.user.username</p>
+            <p style="padding-top: 15px;"><b>Username:</b> @Model.user.username</p>
             <p><b>Password:</b> @Model.user.password</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#passwordModal">
+            <button type="button" data-toggle="modal" data-target="#passwordModal" style="background-color: #0A367E; color: white; border-radius: 5px;">
                 Chanange Password
             </button>
 
@@ -44,72 +45,68 @@
                 </div>
             </div>
         </div>
-
-
-        <div id="acountInformationSection" class="col-sm-8">
-            <div id="contactInfo">
-                <h3 class="sectionHeadder">Contact Information</h3>
-                <p><b>Phone:</b> @Model.userContact.phone</p>
-                <p><b>Email:</b> @Model.userContact.email</p>
-                <p><b>Social Media:</b> @Model.userContact.social_media</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ContactModal">
-                    Chanange Contact Informaton
-                </button>
-            </div>
-
-            <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Change Contact Information </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="updateFormContact" method="POST" action="/AccountInformation/UpdateContact">
-                                <div class="row form-field">
-                                    <div class="col ">
-                                        <input type="text" class="form-control" asp-for="userContact.phone" placeholder="Phone number" required>
+        </div>
+        @* This is the RIGHT half *@
+        <div style="float: right; width: 40%; margin-right: 28%; margin-left: 15%; margin-top: 30px; height: 670px;">
+                <div id="contactInfo">
+                    <h3 style="color: #0A367E; border-bottom: 1px solid ; padding-top: 15px;">Contact Information</h3>
+                    <p style="margin-left: 20px;"><b>Phone:</b> @Model.userContact.phone</p>
+                    <p style="margin-left: 20px;"><b>Email:</b> @Model.userContact.email</p>
+                    <p style="margin-left: 20px;"><b>Social Media:</b> @Model.userContact.social_media</p>
+                    <button type="button" data-toggle="modal" data-target="#ContactModal" style="background-color: #0A367E; color: white; border-radius: 5px; margin-left: 20px;">
+                        Chanange Contact Informaton
+                    </button>
+                </div>
+                <div class="modal fade" id="ContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Change Contact Information </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateFormContact" method="POST" action="/AccountInformation/UpdateContact">
+                                    <div class="row form-field">
+                                        <div class="col ">
+                                            <input type="text" class="form-control" asp-for="userContact.phone" placeholder="Phone number" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-field">
-                                    <div class="col ">
-                                        <input type="email" class="form-control" asp-for="userContact.email" placeholder="Email" required>
+                                    <div class="row form-field">
+                                        <div class="col ">
+                                            <input type="email" class="form-control" asp-for="userContact.email" placeholder="Email" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row form-field">
-                                    <div class="col ">
-                                        <input type="text" class="form-control" asp-for="userContact.social_media" placeholder="Social Media" required>
-                                        <input type="text" class="form-control" asp-for="userContact.contact_id" hidden>
+                                    <div class="row form-field">
+                                        <div class="col ">
+                                            <input type="text" class="form-control" asp-for="userContact.social_media" placeholder="Social Media" required>
+                                            <input type="text" class="form-control" asp-for="userContact.contact_id" hidden>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" form="updateFormContact" class="btn btn-primary">Save changes</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" form="updateFormContact" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="addressInfo">
-                <h3 class="sectionHeadder">Address Information</h3>
-                <p><b>Street:</b> @Model.userAddress.street_name</p>
-                <p><b>ZIP:</b> @Model.userAddress.ZIP</p>
-                <p><b>Region:</b> @Model.userAddress.region</p>
-            </div>
-            <div id="houseInfo">
-                <h3 class="sectionHeadder">House Information</h3>
-                <p><b>Type:</b> @Model.userHouse.house_type</p>
-                <p><b>Total Area:</b> @Model.userHouse.house_area</p>
-                <p><b>Heating System:</b> @Model.userHouse.heating_system</p>
-            </div>
-            
+                <div id="addressInfo">
+                    <h3 style="color: #0A367E; border-bottom: 1px solid ; padding-top: 15px;">Address Information</h3>
+                    <p style="margin-left: 20px;"><b>Street:</b> @Model.userAddress.street_name</p>
+                    <p style="margin-left: 20px;"><b>ZIP:</b> @Model.userAddress.ZIP</p>
+                    <p style="margin-left: 20px;"><b>Region:</b> @Model.userAddress.region</p>
+                </div>
+                <div id="houseInfo">
+                    <h3 style="color: #0A367E; border-bottom: 1px solid ; padding-top: 15px;">House Information</h3>
+                    <p style="margin-left: 20px;"><b>Type:</b> @Model.userHouse.house_type</p>
+                    <p style="margin-left: 20px;"><b>Total Area:</b> @Model.userHouse.house_area</p>
+                    <p style="margin-left: 20px;"><b>Heating System:</b> @Model.userHouse.heating_system</p>
+                </div>
         </div>
-    </div>
 </div>
 
 

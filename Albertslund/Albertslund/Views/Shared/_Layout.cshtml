@@ -11,17 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Albertslund</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
-
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/accountInformation.css" />
     <link rel="stylesheet" href="~/css/contactAdvisor.css" />
 </head>
 <body>
-    <div id="google_translate_element"></div>
-
     @* Put here the NAVIGATION & FOOTER elements *@
-
     <header class="header" style="width: 100%; height: 80px; overflow: hidden;">
 
         @* Here sits the TOP-LEFT Albertslund LOGO *@
@@ -42,6 +36,7 @@
                style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
                 Account
             </a>
+            <div id="google_translate_element"></div>
         </div>
 
         @* Here sit the TOP-RIGH LOGIN elements *@
@@ -89,10 +84,10 @@
 
     @* Put here the FOOTER elements *@
 
-    <footer class="footer" style="background-color: #0A367E; position: fixed; left: 0; bottom: 0; width: 100%; overflow:hidden;height:auto;">
+    <footer class="footer" style="background-color: #0A367E; position: absolute; left: 0; bottom: 0; width: 100%; overflow:hidden; height: 159px; top: 780px;">
 
         @* LEFT HALF *@
-        <div style="float: left; width: 25%; margin-left: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
+        <div style="float: left; width: 25%; margin-left: 25%; margin-bottom: 20px; margin-top: 15px; height: 124px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 30px;">
             <p style="margin: 0; ">E-mail: albertslund@albertslund.dk</p>
             <p style="margin: 0; ">Phone: +45 43 68 68 68</p>
             <p style="margin: 0; ">Fax: Fax +45 43 68 69 28</p>
@@ -100,7 +95,7 @@
         </div>
 
         @* RIGHT HALF *@
-        <div style="float: right; width: 25%; margin-right: 25%; margin-bottom: 20px; margin-top: 20px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 35px;">
+        <div style="float: right; width: 25%; margin-right: 25%; margin-bottom: 20px; margin-top: 15px; height: 124px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 30px;">
             <p style="margin: 0; ">
                 Click here to contact an energy advisor &emsp;<br />
                 <a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"
