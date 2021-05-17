@@ -24,7 +24,7 @@ namespace Albertslund.Controllers
         public IActionResult Index()
         {
             ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
-            ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessioSuccess");
+            ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessionSuccess");
             Reader();
 
 
@@ -53,8 +53,8 @@ namespace Albertslund.Controllers
 
         public void ActionOccurOnFileCreated(object sender, FileSystemEventArgs e)
         {
-            String TheNewFile = e.Name;
-            String TheNewFilePath = Path.GetFullPath(TheNewFile);
+            string TheNewFile = e.Name;
+            string TheNewFilePath = Path.GetFullPath(TheNewFile);
             Debug.WriteLine("*** Hey! A new file was added.");
             Debug.WriteLine(e.ChangeType + ".");
             Debug.WriteLine(TheNewFile);
@@ -63,10 +63,11 @@ namespace Albertslund.Controllers
             Debug.WriteLine("The file" + TheNewFile + " will now be read and saved in the database.");
             
             DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-            if (context.createDBEntries(TheNewFilePath))
+            /*if (context.createDBEntries(TheNewFilePath))
             {
                 Debug.WriteLine("Wrote to DB");
             }
+            */
         }
 
         public void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)

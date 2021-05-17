@@ -1,0 +1,43 @@
+﻿@using Albertslund;
+@model CSVData
+@{
+    ViewData["Title"] = "CSVDataDisplay";
+}
+<div id="csvTableContainer" class="container">
+
+    <h1 id="tableName">Household data usage:</h1>
+    <a id="estimation-link" class="btn" asp-controller="UsageData" asp-action="Index">Renovation estimate</a>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Energy</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Water</th>
+                <th scope="col">Unit</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (CSVData data in ViewBag.csvArray)
+                {
+                    <tr>
+                        <th scope="row">@data.reading_id</th>
+                        <td>@data.date</td>
+                        <td>@data.time</td>
+                        <td>@data.water</td>
+                        <td>M3</td>
+                        <td>@data.energy</td>
+                        <td>MWh</td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+
+</div>

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/contactAdvisor.css" />
+    <link rel="stylesheet" href="~/css/usageData.css" />
+    <link rel="stylesheet" href="~/css/CSVDataDisplay.css" />
 </head>
 <body>
     @* Put here the NAVIGATION & FOOTER elements *@
@@ -26,18 +28,23 @@
         </div>
 
         @* Here sit the CENTER NAVIGATION elements *@
-        <div style="width: 56%; height: 27px; margin-top: 17px; text-align: center; float: left;">
-            <a asp-area="" asp-controller="Home" asp-action="Index"
-               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
-                Home
-            </a>
+    <div style="width: 56%; height: 27px; margin-top: 17px; text-align: center; float: left;">
+        <a asp-area="" asp-controller="Home" asp-action="Index"
+           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
+            Home
+        </a>
 
-            <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
-               style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
-                Account
-            </a>
-            <div id="google_translate_element"></div>
-        </div>
+        <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
+           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
+            Account
+        </a>
+
+        <a asp-area="" asp-controller="UsageData" asp-action="CSVDataDisplay"
+           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
+            Household Usage
+        </a>
+        <div id="google_translate_element"></div>
+    </div>
 
         @* Here sit the TOP-RIGH LOGIN elements *@
     <div id="top-right-login-element" style="width: 20%; height: 53px; margin-right: 2%; margin-top: 15px; float: right; text-align: right;">
@@ -128,7 +135,7 @@
             </p>
         </div>
     </footer>
-    <script> let userLoggedIn = @ViewBag.UserLogged</script>
+
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -35,7 +35,8 @@ namespace Albertslund.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from user_house where house_id = 1", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from user_house where house_id = @House_id", conn);
+                cmd.Parameters.AddWithValue("@House_id", house_id);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -59,7 +60,8 @@ namespace Albertslund.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from user_contact where contact_id = 1", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from user_contact where contact_id = @Contact_id", conn);
+                cmd.Parameters.AddWithValue("@Contact_id", contact_id);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -112,7 +114,8 @@ namespace Albertslund.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from user_address where address_id = 1", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from user_address where address_id = @Address_id", conn);
+                cmd.Parameters.AddWithValue("@Address_id", address_id);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -137,7 +140,8 @@ namespace Albertslund.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from user where user_id = 1", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from user where user_id = @User_id", conn);
+                cmd.Parameters.AddWithValue("@User_id", user_id);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -191,7 +195,7 @@ namespace Albertslund.Models
         }
         public bool createDBEntries(String filePath)
         {
-            bool finished = false;
+            /*bool finished = false;
             var csvTable = new DataTable();
             //test.csv is correct daily.csv is corrupt
             using ( var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead("@"+filePath)), true))
@@ -227,8 +231,10 @@ namespace Albertslund.Models
                     using (var reader = cmd.ExecuteReader())
                     { finished = true; }
                 }
-            }
-            return finished;
+            } */
+            //return finished;
+            return false;
+            
         }
         public bool UpdateUser(int user_id, string password)
         {
@@ -254,6 +260,37 @@ namespace Albertslund.Models
                 return true;
             }
             
+        }
+
+        public List<CSVData> GetCSVData(int user_id)
+        {
+            List<CSVData> csvDataArray = new List<CSVData>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                //insted of readding id should be user id 
+                MySqlCommand cmd = new MySqlCommand("select * from readings where readings.reading_id = @User_id", conn);
+                cmd.Parameters.AddWithValue("@User_id", 1);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        csvDataArray.Add(new CSVData()
+                        {
+                            reading_id = Convert.ToInt32(reader["reading_id"]),
+                            date = reader["timestamp"].ToString().Split(" ")[0],
+                            time = reader["timestamp"].ToString().Split(" ")[1],
+                            energy = reader["energy_used"].ToString(),
+                            water = reader["water_used"].ToString()
+                        });
+ 
+                    };
+                }
+                conn.Close();
+            }
+            return csvDataArray;
         }
 
     }

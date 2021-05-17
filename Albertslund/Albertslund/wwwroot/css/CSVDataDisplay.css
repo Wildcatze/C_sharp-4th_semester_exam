@@ -1,0 +1,15 @@
+﻿#csvTableContainer{
+    margin-top: 3%;
+}
+#tableName {
+    color: #0A367E;
+
+}
+
+a.btn {
+    text-decoration: none !important;
+    background-color: #0A367E !important;
+    color: white !important;
+    border-radius: 5px !important;
+    margin-bottom:3%;
+}
