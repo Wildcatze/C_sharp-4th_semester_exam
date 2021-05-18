@@ -6,37 +6,37 @@
     background-color: floralwhite;
 }
 
-.slider-frame {
+/*.slider-frame {
     overflow: hidden;
     height: 700px;
-    width: 1920px;
+    width: 100%;
     margin-left: 0px;
     margin-top: 0px;
     opacity: 70%;
 }
 
 @-webkit-keyframes slide_animation {
-    0% {left: -1920px;}
-    10% {left: -1920px;}
-    15% {left: 0px;}
-    20% {left: 0px;}
-    30% {left: 1920px;}
-    35% {left: 1920px;}
-    40% {left: 1920px;}
-    45% {left: 3840px;}
-    50% {left: 3840px;}
-    60% {left: 1920px;}
-    70% {left: 1920px;}
-    75% {left: 0px;}
-    80% {left: 0px;}
-    90% {left: -1920px;}
-    100% {left: -1920px;}
+    0% {left: -100%;}
+    10% {left: -100%;}
+    15% {left: 0%;}
+    20% {left: 0%;}
+    30% {left: 100%}
+    35% {left: 100%}
+    40% {left: 100%}
+    45% {left: 200%}
+    50% {left: 200%;}
+    60% {left: 100%;}
+    70% {left: 100%;}
+    75% {left: 0%;}
+    80% {left: 0%;}
+    90% {left: -100%;}
+    100% {left: -100%;}
 }
 
 .slide-images {
-    width: 7680px;
+    width: 400%;
     height: 700px;
-    margin: 0 0 0 -3840px;
+    margin: 0 0 0 -200%;
     position: relative;
     -webkit-animation-name: slide_animation;
     -webkit-animation-duration: 70s;
@@ -48,6 +48,8 @@
 .img-container {
     height: 700px;
     width: 1920px;
+    object-fit: cover;
     position: relative;
     float: left;
-}
+}*/
+

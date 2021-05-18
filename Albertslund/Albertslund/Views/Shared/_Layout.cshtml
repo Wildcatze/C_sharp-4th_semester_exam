@@ -18,72 +18,86 @@
 </head>
 <body>
     @* Put here the NAVIGATION & FOOTER elements *@
-    <header class="header" style="width: 100%; height: 80px; overflow: hidden;">
+    @* Percentages for website page ratio
+                header: 80px = 8.5%
+                main: 700px = 75%
+                footer: 159px = 16.5%
+                Logo Image: 53px = 66.25%  *@
+    <header class="header" style="width: 100%; height: 8.5%; position: absolute;">
 
         @* Here sits the TOP-LEFT Albertslund LOGO *@
-        <div style="width: 20%; height: 53px; margin-left: 2%; margin-top: 15px; float: left;">
+        <div style="float: left; width: 23%; height: 66.25%; margin-left: 2%; margin-top: 15px;">
             <a href="https://albertslund.dk/" style="width:300px; height:53px;">
                 <img src="~/css/AlbertslundLogo.png" style="width:300px; height:53px;" />
             </a>
         </div>
 
         @* Here sit the CENTER NAVIGATION elements *@
-    <div style="width: 56%; height: 27px; margin-top: 17px; text-align: center; float: left;">
-        <a asp-area="" asp-controller="Home" asp-action="Index"
-           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
-            Home
-        </a>
-
-        <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
-           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
-            Account
-        </a>
-
-        <a asp-area="" asp-controller="UsageData" asp-action="CSVDataDisplay"
-           style="width: 100px; height: 60px; margin-left: 25px; margin-right: 25px; text-decoration: none; color: #0A367E; font-size: 27px;">
-            Household Usage
-        </a>
-        <div id="google_translate_element"></div>
-    </div>
-
-        @* Here sit the TOP-RIGH LOGIN elements *@
-    <div id="top-right-login-element" style="width: 20%; height: 53px; margin-right: 2%; margin-top: 15px; float: right; text-align: right;">
-        @{
-            if (ViewBag.UserLogged != null)
-            {
-                <a id="log-button" class="open-button" asp-controller="Login" asp-action="Logout" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
-                    Logout
+        <div style=" float: left; width: 50%; height: 60px; margin-top: 17px; margin-left: 25%; position: absolute;">
+            <div style="float: left; width: 10%; height: 60px; margin-left: 29%; margin-right: 4%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right;">
+                <a asp-area="" asp-controller="Home" asp-action="Index"
+                   style="width: 100px; height: 60px; margin-left: 0; margin-right: 0; text-decoration: none; color: #0A367E; font-size: 27px;">
+                    Home
                 </a>
-            }
-            else
-            {
-                <a id="login-button" class="open-button" onclick="openForm()" style="width: 55px; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
-                    Login
+            </div>
+            <div style="float: left; width: 10%; height: 60px; margin-left: 0; margin-right: 0%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: center;">
+                <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
+                   style="width: 100px; height: 60px; margin-left: 2%; margin-right: 2%; text-decoration: none; color: #0A367E; font-size: 27px;">
+                    Account
                 </a>
-            }
-        }
-        
-        <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
-            @* Join this FORM with back-end for LOGIN *@
-            <form method="post" asp-action="Login" asp-controller="Login" class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px;">
-                <label for="username" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Username:</b></label>
-                <input asp-for="user.username" type="text" placeholder="Enter Username" name="user.username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
-
-                <label for="password" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Password:</b></label>
-                <input asp-for="user.password" type="password" placeholder="Enter Password" name="user.password" style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" />
-
-                <button type="submit" class="btn" style="background-color: #04AA6D; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;">Login</button>
-                <button type="button" class="btn cancel" style="background-color: #EF0107; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;" onclick="closeForm()">Cancel</button>
-            </form>
-
+            </div>
+            <div style="float: left; width:  10%; height:  60px; margin-left: 4%; margin-right: 23%; text-decoration:  none; color: #0A367E; font-size:  27px; text-align: left; ">
+                <a asp-area="" asp-controller="UsageData" asp-action="CSVDataDisplay"
+                   style="width: 100px; height: 60px; margin-left: 0; margin-right: 0; text-decoration: none; color: #0A367E; font-size: 27px;">
+                    Usage
+                </a>
+            </div>
         </div>
-    </div>
+        @* Here sit the TOP-RIGHT LOGIN & TRANSLATE elements *@
+        <div id="top-right-login-element" style="float: right; width: 23%; margin-right: 2%; height: 60px; margin-top: 17px;">
+                        <div style="float: left; width: 75%;  height: 60px; margin-left: 0; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right; padding-top: 2.5%;"
+                             id="google_translate_element">                                  
+                        </div>
+                @{
+                    if (ViewBag.UserLogged != null)
+                    {
+                        <div style="float: right; width: 25%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right;">
+                            <a id="log-button" class="open-button" asp-controller="Login" asp-action="Logout" style="width: 10%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
+                                Logout
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="float: right; width: 25%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right;">
+                            <a id="login-button" class="open-button" onclick="openForm()" style="width: 10%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
+                                Login
+                            </a>
+                        </div>
+                    }
+                }
+            
+
+            <div class="form-popup" id="myForm" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9;">
+                @* Join this FORM with back-end for LOGIN *@
+                <form method="post" asp-action="Login" asp-controller="Login" class="form-container" style="max-width: 300px; padding: 10px; background-color: #0A367E; text-align: left;  border-radius: 5px; ">
+                    <label for="username" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Username:</b></label>
+                    <input asp-for="user.username" type="text" placeholder="Enter Username" name="user.username" required style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;"/>
+
+                    <label for="password" style="text-decoration: none; color: ghostwhite; font-size: 27px; font-weight: 200;"><b>Password:</b></label>
+                    <input asp-for="user.password" type="password" placeholder="Enter Password" name="user.password" style="border-radius: 5px; width: 100%; padding: 15px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;"/>
+
+                    <button type="submit" class="btn" style="background-color: #04AA6D; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;">Login</button>
+                    <button type="button" class="btn cancel" style="background-color: #EF0107; color: white; padding: 16px 20px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px;" onclick="closeForm()">Cancel</button>
+                </form>
+            </div>
+        </div>
     </header>
 
-    @* Put here the BODY main elements *@
+    @* Put here the body MAIN elements *@
 
-    <main role="main">
-        <div style="">
+    <main class="main" style="height: 75%; width: 100%; top: 9.5%; position: absolute;">
+        <div style="height: 100%; width: 100%; position: absolute;">
             @RenderBody()
         </div>
     </main>
@@ -91,28 +105,28 @@
 
     @* Put here the FOOTER elements *@
 
-    <footer class="footer" style="background-color: #0A367E; position: absolute; left: 0; bottom: 0; width: 100%; overflow:hidden; height: 159px; top: 780px;">
+    <footer class="footer" style="background-color: #0A367E;left:  0; bottom: 0; position: absolute; width: 100%; height: 16.5%; top: 83.5%;">
 
         @* LEFT HALF *@
-        <div style="float: left; width: 25%; margin-left: 25%; margin-bottom: 20px; margin-top: 15px; height: 124px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 30px;">
-            <p style="margin: 0; ">E-mail: albertslund@albertslund.dk</p>
-            <p style="margin: 0; ">Phone: +45 43 68 68 68</p>
-            <p style="margin: 0; ">Fax: Fax +45 43 68 69 28</p>
-            <p style="margin: 0; ">Address: Nordmarks Alle 1, 2620 Albertslund</p>
+        <div style="float: left; width: 35%; margin-left: 13%; margin-right: 2%; height: 80%; text-align: right; color: whitesmoke; padding-top: 1%;">
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">E-mail: albertslund@albertslund.dk</p>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">Phone: +45 43 68 68 68</p>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">Fax: Fax +45 43 68 69 28</p>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">Address: Nordmarks Alle 1, 2620 Albertslund</p>
         </div>
 
         @* RIGHT HALF *@
-        <div style="float: right; width: 25%; margin-right: 25%; margin-bottom: 20px; margin-top: 15px; height: 124px; text-align: left;  font-size: 17px; color: whitesmoke; line-height: 30px;">
-            <p style="margin: 0; ">
-                Click here to contact an energy advisor &emsp;<br />
+        <div style="float: right; width: 35%; margin-right: 13%; margin-left: 2%; height: 80%; text-align: left; color: whitesmoke; padding-top: 1%;">
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">Click here to contact an energy advisor</p>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">
                 <a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"
                    style="height:25px; width: 35px;">
                     <img src="~/css/customer service inverted logo.png" style="height: 25px; width: 35px;" />
                     @*https://www.google.com/search?q=customer+service+white+logo&tbm=isch&ved=2ahUKEwiFq_XP0LDwAhXj8bsIHVfPDgsQ2-cCegQIABAA&oq=customer+service+white+logo&gs_lcp=CgNpbWcQAzoGCAAQBxAeOggIABAHEAUQHjoICAAQCBAHEB46BggAEAgQHlCFkwZYvqUGYLisBmgAcAB4AIABQIgBtgaSAQIxNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=2Y6RYMXaOuPj7_UP1567WA&bih=939&biw=1920&client=opera&hs=lWi#imgrc=d4uFG7OOZSYlOM*@
                 </a>
             </p>
-            <p style="margin: 0; ">
-                Follow us on social media<br>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 95%;">Follow us on social media</p>
+            <p style="margin: 0; height: 25%; line-height: 100%; font-size: 95%;">
                 <a href="https://www.linkedin.com/company/albertslund-kommune/" style="width:30px;height:30px;">
                     <img src="~/css/linkedin white logo.png" style="width:30px;height:30px;" />
                     @*https://www.google.com/search?q=Linkedin+white+logo&tbm=isch&ved=2ahUKEwiYpunFzbDwAhWIu6QKHWj8BQUQ2-cCegQIABAA&oq=Linkedin+white+logo&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgYIABAFEB4yBggAEAUQHjoECAAQQ1C1uwVYidQFYKjWBWgAcAB4AIABVIgBugmSAQIxOZgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=n4uRYNjaHYj3kgXo-Jco&bih=939&biw=1920&client=opera&hs=YJi#imgrc=301TvyXw7oRGhM*@
