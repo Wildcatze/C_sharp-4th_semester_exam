@@ -34,19 +34,19 @@
 
         @* Here sit the CENTER NAVIGATION elements *@
         <div style=" float: left; width: 50%; height: 60px; margin-top: 17px; margin-left: 25%; position: absolute;">
-            <div style="float: left; width: 10%; height: 60px; margin-left: 29%; margin-right: 4%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right;">
+            <div style="float: left; width: 10%; height: 60px; margin-left: 27%; margin-right: 5%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: cemter;">
                 <a asp-area="" asp-controller="Home" asp-action="Index"
                    style="width: 100px; height: 60px; margin-left: 0; margin-right: 0; text-decoration: none; color: #0A367E; font-size: 27px;">
                     Home
                 </a>
             </div>
-            <div style="float: left; width: 10%; height: 60px; margin-left: 0; margin-right: 0%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: center;">
+            <div style="float: left; width: 16%; height: 60px; margin-left: 0; margin-right: 0%; text-decoration: none; color: #0A367E; font-size: 27px; text-align: center;">
                 <a asp-area="" asp-controller="AccountInformation" asp-action="Index"
                    style="width: 100px; height: 60px; margin-left: 2%; margin-right: 2%; text-decoration: none; color: #0A367E; font-size: 27px;">
                     Account
                 </a>
             </div>
-            <div style="float: left; width:  10%; height:  60px; margin-left: 4%; margin-right: 23%; text-decoration:  none; color: #0A367E; font-size:  27px; text-align: left; ">
+            <div style="float: left; width:  10%; height:  60px; margin-left: 5%; margin-right: 27%; text-decoration:  none; color: #0A367E; font-size:  27px; text-align: center; ">
                 <a asp-area="" asp-controller="UsageData" asp-action="CSVDataDisplay"
                    style="width: 100px; height: 60px; margin-left: 0; margin-right: 0; text-decoration: none; color: #0A367E; font-size: 27px;">
                     Usage
@@ -70,7 +70,7 @@
                     else
                     {
                         <div style="float: right; width: 25%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; text-align: right;">
-                            <a id="login-button" class="open-button" onclick="openForm()" style="width: 10%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
+                            <a id="login-button" class="open-button" onclick="openForm(); cookieAlert()" style="width: 10%; height: 60px; text-decoration: none; color: #0A367E; font-size: 27px; cursor: pointer;">
                                 Login
                             </a>
                         </div>
