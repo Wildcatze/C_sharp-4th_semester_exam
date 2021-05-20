@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "CSVDataDisplay";
 }
-<div id="csvTableContainer" class="container">
+<div id="csvTableContainer" overflow="auto" style="width: 80%; height: 55%; margin-left: 10%; overflow: auto;">
 
     <h1 id="tableName">Household data usage:</h1>
     <a id="estimation-link" class="btn" asp-controller="UsageData" asp-action="Index">Renovation estimate</a>

@@ -3,8 +3,9 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container iframe-container">
-    <iframe id="iframe" src="https://sparenergi.dk/forbruger/vaerktoejer/tilskudsberegner" title="Get an estimate of your renovation subsidy">
+<div @*class="iframe-container"*@ style="width: 80%; margin-left: 10%; height: 95%; position: absolute; border: 1px solid; box-shadow: 5px 5px 5px 5px #0A367E">
+    <iframe id="iframe" src="https://sparenergi.dk/forbruger/vaerktoejer/tilskudsberegner" title="Get an estimate of your renovation subsidy"
+            style="width: 100%; height: 100%;">
     </iframe>
 </div>
 

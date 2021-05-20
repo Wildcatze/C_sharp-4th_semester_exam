@@ -8,6 +8,12 @@ function openForm() {
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
+function openContactForm() {
+    document.getElementById("contactUs").style.display = "block";
+}
+function closeContactForm() {
+    document.getElementById("contactUs").style.display = "none";
+}
 function cookieAlert() {
     var a = confirm("This website uses cookies in order to improve your experience. Do you accept this website's cookies?");
     if (x == true) {
