@@ -197,7 +197,7 @@ namespace Albertslund.Models
         {
            bool finished = false;
             var csvTable = new DataTable();
-            //test.csv is correct daily.csv is corrupt
+
             using ( var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(filePath)), true))
             {
               
@@ -221,7 +221,8 @@ namespace Albertslund.Models
                     using (var reader = cmd.ExecuteReader())
                     { finished = true; }
                 }
-            } 
+            }
+            System.IO.File.Delete(filePath);
             return finished;
             
             

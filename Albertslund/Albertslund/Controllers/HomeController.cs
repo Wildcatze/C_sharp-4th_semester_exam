@@ -43,8 +43,8 @@ namespace Albertslund.Controllers
                 NotifyFilter = NotifyFilters.FileName | NotifyFilters.Size | NotifyFilters.Attributes,
                 EnableRaisingEvents = true
             };
-
-            fileSystemWatcher.Created += (object sender, FileSystemEventArgs e) =>{
+    
+            fileSystemWatcher.Created += (object sender, FileSystemEventArgs e) => {
                 string TheNewFile = e.Name;
                 string TheNewFilePath = Path.GetFullPath(TheNewFile);
                 Debug.WriteLine("*** Hey! A new file was added.");
@@ -57,41 +57,30 @@ namespace Albertslund.Controllers
                 if (context.createDBEntries(TheNewFilePath))
                 {
                     Debug.WriteLine("Wrote to DB");
-                    System.IO.File.Delete(TheNewFilePath);
                 }
-            };
+            }; 
             fileSystemWatcher.Deleted += ActionOccurOnFileDeled;
             fileSystemWatcher.Renamed += ActionOccurOnFileRenamed;
             Debug.WriteLine("File System Watcher is now running." +
                 "\nThe following path is being monitored: '" + WatchingHere + "'." +
                 "\nAny changes made will appear below.");
         }
-        /*
-        public void ActionOccurOnFileCreated(object sender, FileSystemEventArgs e)
+
+     
+
+
+
+
+        public void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)
         {
             string TheNewFile = e.Name;
             string TheNewFilePath = Path.GetFullPath(TheNewFile);
             Debug.WriteLine("*** Hey! A new file was added.");
             Debug.WriteLine(e.ChangeType + ".");
             Debug.WriteLine(TheNewFile);
-            Debug.WriteLine("The full filepath of the newly added .csv is:");
             Debug.WriteLine(TheNewFilePath);
-            Debug.WriteLine("The file" + TheNewFile + " will now be read and saved in the database.");
-            
-            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-            if (context.createDBEntries(TheNewFilePath))
-            {
-                Debug.WriteLine("Wrote to DB");
-            }
-            
-        }
-        */
-
-        public void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)
-        {
             Debug.WriteLine("*** The following file has been deleted:");
-            Debug.WriteLine(e.ChangeType + ".");
-            Debug.WriteLine(e.Name);
+            Debug.WriteLine(TheNewFile);
         }
 
         public void ActionOccurOnFileRenamed(object sender, RenamedEventArgs e)
