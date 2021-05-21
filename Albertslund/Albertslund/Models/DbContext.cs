@@ -195,24 +195,14 @@ namespace Albertslund.Models
         }
         public bool createDBEntries(String filePath)
         {
-            /*bool finished = false;
+           bool finished = false;
             var csvTable = new DataTable();
             //test.csv is correct daily.csv is corrupt
-            using ( var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead("@"+filePath)), true))
+            using ( var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(filePath)), true))
             {
               
                 csvTable.Load(csvReader);
             }
-            //Debug.WriteLine("ROW " + csvTable.Rows[0][1].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[1][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[2][2].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[2][3].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[3][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[4][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[5][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[6][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[7][0].ToString() + " COLUMN");
-            //Debug.WriteLine("ROW " + csvTable.Rows[8][0].ToString() + " COLUMN");
             //READING Object 
             for (int i=0; i<csvTable.Rows.Count;i++)
             {
@@ -231,9 +221,9 @@ namespace Albertslund.Models
                     using (var reader = cmd.ExecuteReader())
                     { finished = true; }
                 }
-            } */
-            //return finished;
-            return false;
+            } 
+            return finished;
+            
             
         }
         public bool UpdateUser(int user_id, string password)

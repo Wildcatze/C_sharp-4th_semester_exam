@@ -25,7 +25,8 @@ namespace Albertslund.Controllers
         {
             ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
             ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessionSuccess");
-            Reader();
+            DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
+            Reader(context);
 
 
             return View();
@@ -33,7 +34,7 @@ namespace Albertslund.Controllers
         }
 
 
-        public void Reader()
+        public void Reader(DbContext context)
         {
             String WatchingHere = @"New CSV";
             var fileSystemWatcher = new FileSystemWatcher(WatchingHere)
@@ -43,14 +44,29 @@ namespace Albertslund.Controllers
                 EnableRaisingEvents = true
             };
 
-            fileSystemWatcher.Created += ActionOccurOnFileCreated;
+            fileSystemWatcher.Created += (object sender, FileSystemEventArgs e) =>{
+                string TheNewFile = e.Name;
+                string TheNewFilePath = Path.GetFullPath(TheNewFile);
+                Debug.WriteLine("*** Hey! A new file was added.");
+                Debug.WriteLine(e.ChangeType + ".");
+                Debug.WriteLine(TheNewFile);
+                Debug.WriteLine("The full filepath of the newly added .csv is:");
+                Debug.WriteLine(TheNewFilePath);
+                Debug.WriteLine("The file" + TheNewFile + " will now be read and saved in the database.");
+
+                if (context.createDBEntries(TheNewFilePath))
+                {
+                    Debug.WriteLine("Wrote to DB");
+                    System.IO.File.Delete(TheNewFilePath);
+                }
+            };
             fileSystemWatcher.Deleted += ActionOccurOnFileDeled;
             fileSystemWatcher.Renamed += ActionOccurOnFileRenamed;
             Debug.WriteLine("File System Watcher is now running." +
                 "\nThe following path is being monitored: '" + WatchingHere + "'." +
                 "\nAny changes made will appear below.");
         }
-
+        /*
         public void ActionOccurOnFileCreated(object sender, FileSystemEventArgs e)
         {
             string TheNewFile = e.Name;
@@ -63,12 +79,13 @@ namespace Albertslund.Controllers
             Debug.WriteLine("The file" + TheNewFile + " will now be read and saved in the database.");
             
             DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-            /*if (context.createDBEntries(TheNewFilePath))
+            if (context.createDBEntries(TheNewFilePath))
             {
                 Debug.WriteLine("Wrote to DB");
             }
-            */
+            
         }
+        */
 
         public void ActionOccurOnFileDeled(object sender, FileSystemEventArgs e)
         {
