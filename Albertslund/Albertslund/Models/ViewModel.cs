@@ -11,5 +11,6 @@ namespace Albertslund.Models
         public UserAddress userAddress { get; set; }
         public UserContact userContact { get; set; }
         public UserHouse userHouse { get; set; }
+        public Email email { get; set; }
     }
 }

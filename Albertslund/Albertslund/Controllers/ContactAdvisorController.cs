@@ -12,6 +12,8 @@ namespace Albertslund.Controllers
 {
     public class ContactAdvisorController : Controller
     {
+        //not used
+        /*
         public IActionResult Index()
         {
             if (HttpContext.Session.GetInt32("SessionUserId") == null)
@@ -25,17 +27,17 @@ namespace Albertslund.Controllers
                 return View();
             }
                 
-        }
+        } */
 
         [HttpPost]
-        public IActionResult SendEmail(Email email)
+        public IActionResult SendEmail(ViewModel viewModel)
         {
-            Debug.WriteLine(email.from);
+            Debug.WriteLine(viewModel.email.from);
             MailMessage message = new MailMessage();
             message.To.Add("albertslund.project@gmail.com");
-            message.From = new MailAddress(email.from);
-            message.Subject = email.subject;
-            message.Body = string.Format("Message send by: {0} {1} from {2}\n {3}", email.firstName,email.lastName,email.from,email.body);
+            message.From = new MailAddress(viewModel.email.from);
+            message.Subject = viewModel.email.subject;
+            message.Body = string.Format("Message send by: {0} {1} from {2}\n {3}", viewModel.email.firstName, viewModel.email.lastName, viewModel.email.from, viewModel.email.body);
             message.IsBodyHtml = false;
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
@@ -45,7 +47,7 @@ namespace Albertslund.Controllers
 
             smtp.Credentials = new System.Net.NetworkCredential("albertslund.project@gmail.com", "Albertslund2021");
             smtp.Send(message);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
     }
 }

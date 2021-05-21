@@ -8,8 +8,13 @@ function openForm() {
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
-function openContactForm() {
-    document.getElementById("contactUs").style.display = "block";
+function openContactForm(loggedInUSer) {
+    if (loggedInUSer != null) {
+        document.getElementById("contactUs").style.display = "block";
+    } else {
+        alert("Please, login before you send a request.");
+    }
+    
 }
 function closeContactForm() {
     document.getElementById("contactUs").style.display = "none";

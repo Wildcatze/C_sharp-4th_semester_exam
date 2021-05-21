@@ -119,7 +119,7 @@
         <div style="float: right; width: 35%; margin-right: 13%; margin-left: 2%; height: 90%; text-align: left; color: whitesmoke; padding-top: 1%;">
             <p style="margin: 0; height: 25%; line-height: 100%; font-size: 100%;">Write us a message here:&ensp;
                 @*<a asp-area="" asp-controller="ContactAdvisor" asp-action="Index"*@
-                <a class="open-button" onclick="openContactForm()">
+                <a class="open-button" onclick="openContactForm(@ViewBag.UserLogged)">
                     <img src="~/css/customer service inverted logo.png" style="height: 25px; width: 35px; cursor: pointer;">
                     @*https://www.google.com/search?q=customer+service+white+logo&tbm=isch&ved=2ahUKEwiFq_XP0LDwAhXj8bsIHVfPDgsQ2-cCegQIABAA&oq=customer+service+white+logo&gs_lcp=CgNpbWcQAzoGCAAQBxAeOggIABAHEAUQHjoICAAQCBAHEB46BggAEAgQHlCFkwZYvqUGYLisBmgAcAB4AIABQIgBtgaSAQIxNpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=2Y6RYMXaOuPj7_UP1567WA&bih=939&biw=1920&client=opera&hs=lWi#imgrc=d4uFG7OOZSYlOM*@
                 </a>
@@ -135,13 +135,13 @@
                     <h3 style="margin: 0; text-decoration-color: black;">How could we help you?</h3> <br />
                     <div style="float: left; width: 30%; height: 63%;">
                         <input style="float: left; width: 100%; height: 15%; margin-bottom: 5%;"
-                               type="text" class="form-control" @*name="firstName" asp-for="firstName"*@ placeholder="*First name" required>
+                               type="text" class="form-control" name="email.firstName" asp-for="email.firstName" placeholder="*First name" required>
                         <input style="float: left; width: 100%; height: 15%; margin-bottom: 5%;"
-                               type="text" class="form-control" @*name="lastName" asp-for="lastName"*@ placeholder="*Last name" required>
+                               type="text" class="form-control" name="email.lastName" asp-for="email.lastName" placeholder="*Last name" required>
                         <input style="float: left; width: 100%; height: 15%; margin-bottom: 5%;"
-                               type="email" class="form-control" @*name="from" asp-for="from"*@ placeholder="*Email" required>
+                               type="email" class="form-control" name="email.from" asp-for="email.from" placeholder="*Email" required>
                         <input style="float: left; width: 100%; height: 15%; margin-bottom: 5%;"
-                               type="text" class="form-control" @*name="subject" asp-for="subject"*@ placeholder="*Subject" required>
+                               type="text" class="form-control" name="email.subject" asp-for="email.subject" placeholder="*Subject" required>
                         <button style="float: left; width: 100%; height: 20%; background-color: #04AA6D; color: white; cursor: pointer; border-radius: 5px;"
                                 type="submit">
                             Send Message
@@ -149,7 +149,7 @@
                     </div>
                     <div style="float: right; width: 68%; height: 63%">
                         <textarea style="width: 100%; height: 100%;"
-                                  type="text" class="form-control" name="body" placeholder="*Message" rows="5" cols="30" required></textarea>
+                                  type="text" class="form-control" name="email.body" asp-for="email.body" placeholder="*Message" rows="5" cols="30" required></textarea>
                     </div>
                 </div>
             </form>
