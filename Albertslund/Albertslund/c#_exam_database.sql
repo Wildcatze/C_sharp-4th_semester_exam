@@ -18,31 +18,32 @@ CREATE TABLE IF NOT EXISTS `c#_exam`.`readings`
 `timestamp` TIMESTAMP NOT NULL,
 `energy_used` VARCHAR(10) NOT NULL,
 `water_used` VARCHAR(10) NOT NULL,
+`user_id` INT,
 PRIMARY KEY (`reading_id`),
 UNIQUE INDEX `reading_id` (`reading_id` ASC) VISIBLE);
 
 START TRANSACTION;
 USE `c#_exam`;
-INSERT INTO `c#_exam`.`readings` (`reading_id`, `timestamp`, `energy_used`, `water_used`)
-	VALUES (1, '2020-02-27 23:59:00', '3179,5', '56387,8');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (2, '2020-02-27 23:59:00', '12,178', '366,869');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (3, '2020-02-27 23:59:00', '19,661', '695,487');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (4, '2020-02-27 23:35:00', '8,592', '290,605');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (5, '2020-02-27 23:07:00', '13,945', '403,497');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (6, '2020-02-27 23:58:00', '15', '387,685');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (7, '2020-02-27 23:58:00', '13,274', '504,379');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (8, '2020-02-27 23:58:00', '11,971', '347,939');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (9, '2020-02-27 23:59:00', '12,511', '353,787');
-INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`)
-	VALUES (10, '2020-02-27 23:53:00', '17,456', '494,915');
+INSERT INTO `c#_exam`.`readings` (`reading_id`, `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (1, '2020-02-27 23:59:00', '3179,5', '56387,8',1);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (2, '2020-02-27 23:59:00', '12,178', '366,869',2);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (3, '2020-02-27 23:59:00', '19,661', '695,487',3);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (4, '2020-02-27 23:35:00', '8,592', '290,605',4);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (5, '2020-02-27 23:07:00', '13,945', '403,497',5);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (6, '2020-02-27 23:58:00', '15', '387,685',6);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (7, '2020-02-27 23:58:00', '13,274', '504,379',7);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (8, '2020-02-27 23:58:00', '11,971', '347,939',8);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (9, '2020-02-27 23:59:00', '12,511', '353,787',9);
+INSERT INTO `c#_exam`.`readings` (`reading_id`,  `timestamp`, `energy_used`, `water_used`,`user_id`)
+	VALUES (10, '2020-02-27 23:53:00', '17,456', '494,915',10);
 COMMIT;
 
 CREATE TABLE IF NOT EXISTS `c#_exam`.`user`

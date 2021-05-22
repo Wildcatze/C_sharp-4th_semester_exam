@@ -207,6 +207,7 @@ namespace Albertslund.Models
             for (int i=0; i<csvTable.Rows.Count;i++)
             {
                 string dateTime = csvTable.Rows[i][0].ToString();
+                int user_id = Convert.ToInt32(csvTable.Rows[i][1]);
                 string energyUse = csvTable.Rows[i][2].ToString();
                 string waterUse = csvTable.Rows[i][4].ToString();
                 using (MySqlConnection conn = GetConnection())
@@ -214,10 +215,11 @@ namespace Albertslund.Models
                     //246810
                     //13579
                     conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO readings(`timestamp`,`energy_used`,`water_used`) VALUES(@DATETIME,@ENERGYUSE,@WATERUSE)", conn);
+                    MySqlCommand cmd = new MySqlCommand("INSERT INTO readings(`timestamp`,`energy_used`,`water_used`,`user_id`) VALUES(@DATETIME,@ENERGYUSE,@WATERUSE,@USERID)", conn);
                     cmd.Parameters.AddWithValue("@DATETIME",dateTime);
                     cmd.Parameters.AddWithValue("@ENERGYUSE", energyUse);
                     cmd.Parameters.AddWithValue("@WATERUSE", waterUse);
+                    cmd.Parameters.AddWithValue("@USERID", user_id);
                     using (var reader = cmd.ExecuteReader())
                     { finished = true; }
                 }
@@ -261,8 +263,8 @@ namespace Albertslund.Models
             {
                 conn.Open();
                 //insted of readding id should be user id 
-                MySqlCommand cmd = new MySqlCommand("select * from readings where readings.reading_id = @User_id", conn);
-                cmd.Parameters.AddWithValue("@User_id", 1);
+                MySqlCommand cmd = new MySqlCommand("select * from readings where readings.user_id = @User_id", conn);
+                cmd.Parameters.AddWithValue("@User_id", user_id);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -274,7 +276,8 @@ namespace Albertslund.Models
                             date = reader["timestamp"].ToString().Split(" ")[0],
                             time = reader["timestamp"].ToString().Split(" ")[1],
                             energy = reader["energy_used"].ToString(),
-                            water = reader["water_used"].ToString()
+                            water = reader["water_used"].ToString(),
+                            user_id = Convert.ToInt32(reader["user_id"])
                         });
  
                     };

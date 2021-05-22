@@ -12,6 +12,7 @@ namespace Albertslund.Models
         public string time { get; set; }
         public string energy { get; set; }
         public string water { get; set; }
+        public int user_id { get; set; }
 
     }
 }

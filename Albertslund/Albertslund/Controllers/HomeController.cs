@@ -26,7 +26,10 @@ namespace Albertslund.Controllers
             ViewBag.UserLogged = HttpContext.Session.GetInt32("SessionUserId");
             ViewBag.SessionSuccess = HttpContext.Session.GetInt32("SessionSuccess");
             DbContext context = HttpContext.RequestServices.GetService(typeof(Albertslund.Models.DbContext)) as DbContext;
-            Reader(context);
+            if (HttpContext.Session.GetInt32("SessionUserId") == null) {
+                Reader(context);
+            }
+            
 
 
             return View();
